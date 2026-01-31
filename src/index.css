@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap");
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Trattoria Vecchia Roma — royal European parchment (museum beige) */
+    --background: 43 36% 96%;
+    --foreground: 222 30% 10%;
+
+    --card: 43 36% 97%;
+    --card-foreground: 222 30% 10%;
+
+    --popover: 43 36% 97%;
+    --popover-foreground: 222 30% 10%;
+
+    --primary: 222 30% 10%;
+    --primary-foreground: 43 36% 96%;
+
+    --secondary: 43 22% 92%;
+    --secondary-foreground: 222 30% 10%;
+
+    --muted: 43 16% 92%;
+    --muted-foreground: 220 10% 35%;
+
+    /* Antique gold lives as accent */
+    --accent: 41 58% 48%;
+    --accent-foreground: 222 30% 10%;
+
+    /* Brand accents (editorial emphasis) */
+    --brand-red: 6 55% 42%;
+    --brand-gold: 41 58% 48%;
+
+    /* Secondary materials */
+    --stone: 35 12% 80%;
+    --stone-foreground: 222 30% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 10% 84%;
+    --input: 30 10% 84%;
+    --ring: 41 58% 48%;
+
+    --radius: 0.125rem;
+
+    --font-serif: "Cinzel", ui-serif, Georgia, "Times New Roman", Times, serif;
+    --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+
+    /* Museum paper texture (royal, quiet) */
+    --surface-texture:
+      radial-gradient(900px 520px at 18% 12%, hsl(var(--stone) / 0.20), transparent 62%),
+      radial-gradient(820px 540px at 82% 22%, hsl(var(--brand-gold) / 0.10), transparent 58%),
+      repeating-linear-gradient(
+        0deg,
+        hsl(var(--foreground) / 0.018) 0px,
+        hsl(var(--foreground) / 0.018) 1px,
+        transparent 1px,
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        hsl(var(--foreground) / 0.012) 0px,
+        hsl(var(--foreground) / 0.012) 1px,
+        transparent 1px,
+        transparent 10px
+      ),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Roman luxury — nocturne parchment & volcanic charcoal */
+    --background: 225 18% 8%;
+    --foreground: 40 20% 92%;
+
+    --card: 225 18% 10%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 225 18% 10%;
+    --popover-foreground: 40 20% 92%;
+
+    --primary: 40 20% 92%;
+    --primary-foreground: 225 18% 8%;
+
+    --secondary: 223 14% 14%;
+    --secondary-foreground: 40 20% 92%;
+
+    --muted: 223 14% 14%;
+    --muted-foreground: 35 10% 70%;
+
+    /* Antique gold remains the accent in both themes */
+    --accent: 41 58% 48%;
+    --accent-foreground: 225 18% 8%;
+
+    /* Brand accents remain consistent */
+    --brand-red: 6 55% 52%;
+    --brand-gold: 41 58% 48%;
+
+    --stone: 220 6% 28%;
+    --stone-foreground: 40 20% 92%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 223 12% 18%;
+    --input: 223 12% 18%;
+    --ring: 41 58% 48%;
+
+    --surface-texture:
+      radial-gradient(900px 500px at 20% 10%, hsl(var(--stone) / 0.18), transparent 60%),
+      radial-gradient(800px 500px at 80% 20%, hsl(var(--brand-gold) / 0.10), transparent 55%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .bg-roman-surface {
+    background-image: var(--surface-texture);
+    background-attachment: fixed;
+  }
+
+  .text-museum {
+    letter-spacing: 0.06em;
+  }
+
+  .text-museum-tight {
+    letter-spacing: 0.03em;
+  }
+
+  /* Readability over photography without an overlay */
+  .text-hero-shadow {
+    text-shadow:
+      0 1px 0 hsl(var(--background) / 0.40),
+      0 10px 26px hsl(var(--foreground) / 0.22);
+  }
+}
